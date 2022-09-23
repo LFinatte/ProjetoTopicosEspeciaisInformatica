@@ -1,20 +1,26 @@
 import { Image, Text, View, StyleSheet, SafeAreaView } from "react-native";
 /*SafeArea = não ficar em cima icones iphone*/
 import { Theme } from "../../themes";
-import { NoTasksCard, FabButton, NewTaskModal } from '..';
+import { CardSemTarefa, BotaoMais, ModalNovaTarefa, Botao } from '..';
+import {useState} from 'react'
 
 
 const logo = require('../../../assets/logo.png');
 
 
 export function HomeScreen(){
+
+  // definindo estado das variaveis como falso para não exibir os componentes inicialmente
+  const [modalNovaTarefaVisivel, setModalNovaTarefaVisivel] = useState(false);
+  
   return (
-    <SafeAreaView style={styles.safeArea}>
+      <SafeAreaView style={styles.safeArea}>
       <View style={styles.container}>
         <Image source={logo} style={styles.logo} resizeMode="contain"/>
-        <NoTasksCard/>
-        <FabButton/>
-        <NewTaskModal/>
+        <CardSemTarefa/>
+        <BotaoMais onPress={() => setModalNovaTarefaVisivel(true) }/>
+     {/*definindo estado do modal*/}
+     <ModalNovaTarefa eVisivel={modalNovaTarefaVisivel} fechar={() => setModalNovaTarefaVisivel(false)}/>   
       </View>
     </SafeAreaView>
   );

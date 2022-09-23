@@ -1,12 +1,16 @@
 import { TouchableOpacity, StyleSheet, Image } from "react-native"
 import { Theme } from "../../themes"
 
-const plus = require('../../../assets/plus.png')
+const imagemAdicionar = require('../../../assets/plus.png')
 
-export function FabButton(){
+type Props = {
+  onPress: VoidFunction;
+}
+
+export function BotaoMais({onPress}: Props){
   return(
-    <TouchableOpacity activeOpacity={0.5} style={styles.container}>
-      <Image source={plus} style={styles.image} resizeMode="contain"/>
+    <TouchableOpacity activeOpacity={0.5} style={styles.container} onPress={onPress}>
+      <Image source={imagemAdicionar} style={styles.image} resizeMode="contain"/>
     </TouchableOpacity>
   )
 }
@@ -26,8 +30,6 @@ const styles=StyleSheet.create ({
     position: 'absolute',
     right: 30,
     bottom: 30,
-
-
   },
 
   image: {

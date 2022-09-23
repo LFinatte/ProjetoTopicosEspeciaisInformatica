@@ -1,1 +1,1 @@
-export * from './NoTasksCard';
+export * from './CardSemTarefas';

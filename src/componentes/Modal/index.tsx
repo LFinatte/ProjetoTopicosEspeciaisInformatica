@@ -1,1 +1,1 @@
-export * from './NewTaskModal'
+export * from './ModalNovaTarefa'
