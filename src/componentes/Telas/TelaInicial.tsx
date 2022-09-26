@@ -1,7 +1,7 @@
 import { Image, Text, View, StyleSheet, SafeAreaView } from "react-native";
 /*SafeArea = não ficar em cima icones iphone*/
 import { Theme } from "../../themes";
-import { CardSemTarefa, BotaoMais, ModalNovaTarefa, Botao } from '..';
+import { CardSemTarefa, BotaoMais, ModalNovaTarefa, Botao, Cronometro } from '..';
 import {useState} from 'react'
 
 
@@ -17,9 +17,13 @@ export function HomeScreen(){
       <SafeAreaView style={styles.safeArea}>
       <View style={styles.container}>
         <Image source={logo} style={styles.logo} resizeMode="contain"/>
-        <CardSemTarefa/>
+        {/* 'if' de qual tela vai aparecer */}
+        {true ? <CardSemTarefa/> : (
+          <Cronometro />
+        )}
+        {/* quando clicar no botão mais abre o modal */}
         <BotaoMais onPress={() => setModalNovaTarefaVisivel(true) }/>
-     {/*definindo estado do modal*/}
+     {/*quando clicar na imagem de fechar, fecha o modal*/}
      <ModalNovaTarefa eVisivel={modalNovaTarefaVisivel} fechar={() => setModalNovaTarefaVisivel(false)}/>   
       </View>
     </SafeAreaView>

@@ -13,7 +13,7 @@ type Props = {
 export function ModalNovaTarefa({eVisivel, fechar}: Props){
   return(
     <>
-      <Modal visible={eVisivel} transparent>
+      <Modal animationType="fade" visible={eVisivel} transparent>
         <SafeAreaView style = {styles.safeArea}>
           <View style = {styles.container}>
 

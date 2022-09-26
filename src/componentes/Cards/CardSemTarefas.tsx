@@ -1,16 +1,17 @@
 import { View, StyleSheet, Text, Image } from "react-native";
+import React from 'react';
 
-const check = require('../../../assets/big-check.png');
+const imgSemTarefa = require('../../../assets/lampada-eletrica.png');
 
 export function CardSemTarefa() {
   return(
     <>
       <View style={styles.container}>
-          <Image source={check} style={styles.image}/>
+          <Image source={imgSemTarefa} resizeMode="contain" style={styles.image}/>
           <Text style={styles.text}>SEM TAREFAS</Text>
       </View>
 
-      <Text style={styles.smallText}>Você está livre para aproveitar seu dia!</Text>
+      <Text style={styles.smallText}>VOCÊ ESTÁ LIVRE PARA APROVEITAR SEU DIA!</Text>
     </>
   );
 }
@@ -26,6 +27,8 @@ const styles = StyleSheet.create({
   
   image: {
     marginVertical: 10,
+    width: '100%',
+  height: 200,
   },
 
   text: {
@@ -34,12 +37,11 @@ const styles = StyleSheet.create({
   },
 
   smallText: {
-    width: 150,
     color: '#fff',
-    fontSize: 14,
+    fontSize: 20,
     alignSelf: 'center',
     textAlign: 'center',
-    paddingVertical: 20,
+    paddingVertical: 40,
   }
 
 });
