@@ -18,7 +18,7 @@ export function HomeScreen(){
       <View style={styles.container}>
         <Image source={logo} style={styles.logo} resizeMode="contain"/>
         {/* 'if' de qual tela vai aparecer */}
-        {true ? <CardSemTarefa/> : (
+        {false ? <CardSemTarefa/> : (
           <Cronometro />
         )}
         {/* quando clicar no botão mais abre o modal */}
