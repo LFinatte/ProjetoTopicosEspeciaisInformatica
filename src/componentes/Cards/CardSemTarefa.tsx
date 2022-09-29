@@ -2,14 +2,14 @@ import { View, StyleSheet, Text, Image } from 'react-native';
 
 const check = require('../../../assets/big-check.png');
 
-export function NoTasksCard() {
+export function CardSemTarefas() {
   return (
     <>
       <View style={styles.container}>
         <Image source={check} style={styles.image} />
-        <Text style={styles.text}>No tasks</Text>
+        <Text style={styles.text}>Sem Tarefas</Text>
       </View>
-      <Text style={styles.smallText}>You're free to enjoy your day</Text>
+      <Text style={styles.smallText}>Você está livre para aproveitar seu dia</Text>
     </>
   );
 }

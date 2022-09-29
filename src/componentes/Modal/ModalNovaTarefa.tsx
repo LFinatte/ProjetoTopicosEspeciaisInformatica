@@ -9,10 +9,10 @@ import {
   TouchableOpacity,
   TextInput,
 } from 'react-native';
-import { Theme } from '../../themes';
-import { Button } from '../Buttons';
+import { Theme } from '../../temas';
+import { Botao } from '../Botoes';
 
-const closeImage = require('../../../assets/close.png');
+const fechar = require('../../../assets/close.png');
 
 type Props = {
   isVisible: boolean;
@@ -20,7 +20,7 @@ type Props = {
   onSubmit: (label: string) => void;
 };
 
-export function NewTaskModal({ isVisible, onClose, onSubmit }: Props) {
+export function ModalNovaTarefa({ isVisible, onClose, onSubmit }: Props) {
   const [text, setText] = useState<string>();
 
   function handleSubmit() {
@@ -33,13 +33,13 @@ export function NewTaskModal({ isVisible, onClose, onSubmit }: Props) {
       <SafeAreaView style={styles.safeArea}>
         <View style={styles.container}>
           <View style={styles.header}>
-            <Text style={styles.headerText}>New Task</Text>
+            <Text style={styles.headerText}>Nova Tarefa</Text>
             <TouchableOpacity
               onPress={onClose}
               hitSlop={{ top: 20, left: 20, right: 20, bottom: 20 }}
             >
               <Image
-                source={closeImage}
+                source={fechar}
                 style={styles.closeImage}
                 resizeMode="contain"
               />
@@ -49,10 +49,10 @@ export function NewTaskModal({ isVisible, onClose, onSubmit }: Props) {
             <TextInput
               onChangeText={setText}
               style={styles.textInput}
-              placeholder="Enter a task name here..."
+              placeholder="Adicione uma tarefa"
               placeholderTextColor="rgba(0,0,0,0.5)"
             />
-            <Button
+            <Botao
               label="CREATE"
               onPress={handleSubmit}
               disabled={!text || text?.length === 0}

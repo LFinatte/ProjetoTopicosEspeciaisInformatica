@@ -1,16 +1,16 @@
 import { StyleSheet, FlatList } from 'react-native';
-import { TaskItem, Props as TaskItemProps } from './TaskItem';
+import { ItemTarefa, Props as ItemTarefaPropriedades } from './ItemTarefa';
 
 type Props = {
-  data: TaskItemProps[];
+  data: ItemTarefaPropriedades[];
 };
 
-export function TasksList({ data }: Props) {
+export function ListaTarefas({ data }: Props) {
   return (
     <FlatList
       data={data}
       contentContainerStyle={styles.container}
-      renderItem={({ item }) => <TaskItem {...item} />}
+      renderItem={({ item }) => <ItemTarefa {...item} />}
     />
   );
 }

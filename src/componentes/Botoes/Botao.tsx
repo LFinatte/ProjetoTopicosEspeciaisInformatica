@@ -1,5 +1,5 @@
 import { TouchableOpacity, StyleSheet, Text, Image } from 'react-native';
-import { Theme } from '../../themes';
+import { Theme } from '../../temas';
 
 type Props = {
   variant?: 'primary' | 'light';
@@ -9,7 +9,7 @@ type Props = {
   onPress?: VoidFunction;
 };
 
-export function Button({
+export function Botao({
   variant = 'primary',
   label,
   icon,

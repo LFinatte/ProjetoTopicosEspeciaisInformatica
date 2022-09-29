@@ -1,41 +1,41 @@
 import { View, Text, StyleSheet } from 'react-native';
-import { Button } from '../Buttons';
+import { Botao } from '../Botoes';
 
-const playImage = require('../../../assets/play.png');
-const pauseImage = require('../../../assets/pause.png');
-const stopImage = require('../../../assets/stop.png');
-const restartImage = require('../../../assets/restart.png');
-const strongCheckImage = require('../../../assets/strong-check.png');
+const imagemComecar = require('../../../assets/play.png');
+const imagemPausar = require('../../../assets/pause.png');
+const imagemParar = require('../../../assets/stop.png');
+const imagemRecomecar = require('../../../assets/restart.png');
+const checkNegrito = require('../../../assets/strong-check.png');
 
 type Props = {
-  step?: 'START' | 'IN_PROGRESS' | 'FINISHED';
+  step?: 'COMECAR' | 'EM_PROGRESSO' | 'FINALIZAR';
 };
 
-export function Timer({ step = 'START' }: Props) {
+export function Timer({ step = 'COMECAR' }: Props) {
   return (
     <View style={styles.container}>
       <Text style={styles.statusText}>Ready</Text>
       <Text style={styles.timerText}>24:59</Text>
       <View style={styles.controls}>
-        {step === 'START' && (
+        {step === 'COMECAR' && (
           <View style={{ width: '65%' }}>
-            <Button variant="light" label="START" />
+            <Botao variant="light" label="COMECAR" />
           </View>
         )}
-        {step === 'IN_PROGRESS' && (
+        {step === 'EM_PROGRESSO' && (
           <>
-            <Button variant="light" icon={playImage} />
+            <Botao variant="light" icon={imagemComecar} />
             <View style={{ paddingHorizontal: 10 }}>
-              <Button variant="light" icon={pauseImage} />
+              <Botao variant="light" icon={imagemPausar} />
             </View>
-            <Button variant="light" icon={stopImage} />
+            <Botao variant="light" icon={imagemParar} />
           </>
         )}
-        {step === 'FINISHED' && (
+        {step === 'FINALIZAR' && (
           <>
-            <Button variant="light" icon={restartImage} />
+            <Botao variant="light" icon={imagemRecomecar} />
             <View style={{ paddingLeft: 5 }}>
-              <Button variant="light" icon={strongCheckImage} />
+              <Botao variant="light" icon={checkNegrito} />
             </View>
           </>
         )}

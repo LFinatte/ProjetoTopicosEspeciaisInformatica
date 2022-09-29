@@ -3,15 +3,15 @@ import { Image, Text, TouchableOpacity, StyleSheet } from 'react-native';
 export type Props = {
   isSelected?: boolean;
   label: string;
-  status?: 'READY' | 'IN_PROGRESS' | 'FINISHED';
+  status?: 'INICIAR' | 'EM_PROGRESSO' | 'FINALIZAR';
 };
 
-const tinyCheckImage = require('../../../assets/tiny-check.png');
+const imagemCheck = require('../../../assets/tiny-check.png');
 
-export function TaskItem({
+export function ItemTarefa({
   isSelected = false,
   label,
-  status = 'READY',
+  status = 'INICIAR',
 }: Props) {
   return (
     <TouchableOpacity
@@ -19,10 +19,10 @@ export function TaskItem({
       style={[styles.container, isSelected && styles.containerSelected]}
     >
       <Text style={styles.label}>{label}</Text>
-      {status === 'IN_PROGRESS' && (
+      {status === 'EM_PROGRESSO' && (
         <Text style={styles.statusText}>In progress</Text>
       )}
-      {status === 'FINISHED' && <Image source={tinyCheckImage} />}
+      {status === 'FINALIZAR' && <Image source={imagemCheck} />}
     </TouchableOpacity>
   );
 }

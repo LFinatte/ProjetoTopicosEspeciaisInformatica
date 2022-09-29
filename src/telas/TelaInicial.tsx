@@ -1,57 +1,57 @@
 import { useReducer } from 'react';
 import { Image, StyleSheet, View, SafeAreaView } from 'react-native';
 import {
-  FabButton,
-  NewTaskModal,
-  NoTasksCard,
+  BotaoAdicionar,
+  ModalNovaTarefa,
+  CardSemTarefas,
   Timer,
-  TasksList,
-} from '../components';
+  ListaTarefas,
+} from '../componentes';
 import {
-  HomeScreenActions,
-  homeScreenInitialState,
-  homeScreenReducer,
+  TelaInicialAcoes,
+  telaInicialEstadoInicial,
+  telaInicialReducer,
 } from '../reducers';
-import { Theme } from '../themes';
+import { Theme } from '../temas';
 
 const logoImage = require('../../assets/logo.png');
 
 export function HomeScreen() {
   const [state, dispatch] = useReducer(
-    homeScreenReducer,
-    homeScreenInitialState
+    telaInicialReducer,
+    telaInicialEstadoInicial
   );
   return (
     <SafeAreaView style={styles.safeArea}>
       <View style={styles.container}>
         <Image source={logoImage} style={styles.logo} resizeMode="contain" />
         {false ? (
-          <NoTasksCard />
+          <CardSemTarefas />
         ) : (
           <>
             <View style={styles.timerContainer}>
               <Timer />
             </View>
-            <TasksList data={state.tasks} />
+            <ListaTarefas data={state.tarefas} />
           </>
         )}
-        <FabButton
+        <BotaoAdicionar
           onPress={() =>
-            dispatch(HomeScreenActions.toggleModal({ isModalVisible: true }))
+            dispatch(TelaInicialAcoes.botaoModal({ modalEstaVisivel: true }))
           }
         />
-        <NewTaskModal
-          isVisible={state.isModalVisible}
+        <ModalNovaTarefa
+          isVisible={state.modalEstaVisivel}
           onClose={() =>
-            dispatch(HomeScreenActions.toggleModal({ isModalVisible: false }))
+            dispatch(TelaInicialAcoes.botaoModal({ modalEstaVisivel: false }))
           }
           onSubmit={(label: string) =>
             dispatch(
-              HomeScreenActions.createTask({
-                task: {
+              TelaInicialAcoes.criarTarefa({
+                tarefa: {
                   label,
                   isSelected: false,
-                  status: 'READY',
+                  status: 'INICIAR',
                 },
               })
             )

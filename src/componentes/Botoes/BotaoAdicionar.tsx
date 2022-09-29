@@ -1,5 +1,5 @@
 import { TouchableOpacity, StyleSheet, Image } from 'react-native';
-import { Theme } from '../../themes';
+import { Theme } from '../../temas';
 
 const plus = require('../../../assets/plus.png');
 
@@ -7,7 +7,7 @@ type Props = {
   onPress: VoidFunction;
 };
 
-export function FabButton({ onPress }: Props) {
+export function BotaoAdicionar({ onPress }: Props) {
   return (
     <TouchableOpacity style={styles.container} onPress={onPress}>
       <Image source={plus} style={styles.image} resizeMode="contain" />
