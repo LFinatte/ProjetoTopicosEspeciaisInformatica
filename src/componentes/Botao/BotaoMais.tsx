@@ -1,7 +1,7 @@
 import { TouchableOpacity, StyleSheet, Image } from "react-native"
 import { Theme } from "../../themes"
 
-const imagemAdicionar = require('../../../assets/plus.png')
+const adicionarImagem = require('../../../assets/plus.png')
 
 type Props = {
   onPress: VoidFunction;
@@ -10,7 +10,7 @@ type Props = {
 export function BotaoMais({onPress}: Props){
   return(
     <TouchableOpacity activeOpacity={0.5} style={styles.container} onPress={onPress}>
-      <Image source={imagemAdicionar} style={styles.image} resizeMode="contain"/>
+      <Image source={adicionarImagem} style={styles.image} resizeMode="contain"/>
     </TouchableOpacity>
   )
 }

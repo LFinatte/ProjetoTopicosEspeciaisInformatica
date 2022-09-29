@@ -1,58 +1,55 @@
-import { Image, Text, View, StyleSheet, SafeAreaView } from "react-native";
+import {useReducer} from 'react'
 /*SafeArea = não ficar em cima icones iphone*/
+import { Image, View, StyleSheet, SafeAreaView } from "react-native";
+import { CardSemTarefa, BotaoMais, ModalNovaTarefa, Cronometro, ListaTarefas } from '..';
+import { TelaInicialActions, telaInicialEstadoInicial,telaInicialReducer } from "../../reducer";
 import { Theme } from "../../themes";
-import { CardSemTarefa, BotaoMais, ModalNovaTarefa, Botao, Cronometro, ListaTarefas } from '..';
-import {useState, useReducer} from 'react'
-
 
 const logo = require('../../../assets/logo.png');
 
-
 export function HomeScreen(){
 
-  // definindo estado das variaveis como falso para não exibir os componentes inicialmente
-  const [modalNovaTarefaVisivel, setModalNovaTarefaVisivel] = useState(false);
-  
+  const [state, dispatch] = useReducer(
+    telaInicialReducer,
+    telaInicialEstadoInicial
+  );
+
   return (
       <SafeAreaView style={styles.safeArea}>
       <View style={styles.container}>
         {/* logo do app */}
         <Image source={logo} style={styles.logo} resizeMode="contain"/>
         {/* 'if' de qual tela vai aparecer */}
-        {false ? <CardSemTarefa/> : (
+        {false ? (
+          <CardSemTarefa/>
+          ) : (
           <>
           {/* exibe cronometro */}
-          <Cronometro />
+            <View style={styles.timerContainer}>
+              <Cronometro />
+            </View>
 
           {/* passa lista de tarefas, tarefa e o status da tarefa */}
-          <ListaTarefas data={[
-            {
-              estaAtivo: true, 
-              label:'Create a project', 
-              estado: 'EM_PROGRESSO'
-            },
-            {
-              estaAtivo: false, 
-              label:'Create a project', 
-              estado: 'PRONTO'
-            },
-            {
-              estaAtivo: false, 
-              label:'Create a project', 
-              estado: 'PRONTO'
-            }
-          ]}/>
+          <ListaTarefas data={state.Tarefas}/>
           </>
         )}
 
         {/* quando clicar no botão mais abre o modal */}
-        <BotaoMais onPress={() => setModalNovaTarefaVisivel(true) }/>
-
-        {/*quando clicar na imagem de fechar, fecha o modal*/}
-        <ModalNovaTarefa 
-          eVisivel={modalNovaTarefaVisivel} 
-          fechar={() => setModalNovaTarefaVisivel(false)}
+        <BotaoMais 
+          onPress={() => 
+            dispatch(TelaInicialActions.botaoModal({modalNovaTarefaVisivel: true}))}
         />   
+
+        <ModalNovaTarefa
+          eVisivel = {state.modalNovaTarefaVisivel}
+          onClose = {()=> dispatch(TelaInicialActions.botaoModal({modalNovaTarefaVisivel: false}))}
+          onSubmit={(label: string) => dispatch(TelaInicialActions.criarTarefa({task: {
+            label,
+            isSelected: false,
+            status: 'PRONTO'},
+            })
+          )}
+        />
       </View>
     </SafeAreaView>
   );
@@ -66,6 +63,9 @@ const styles = StyleSheet.create({
 
   container: {
     flex: 1,
+  },
+
+  timerContainer: {
     paddingHorizontal: 20,
   },
 
@@ -75,4 +75,4 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     marginVertical: 30,
   },
-})
+});
