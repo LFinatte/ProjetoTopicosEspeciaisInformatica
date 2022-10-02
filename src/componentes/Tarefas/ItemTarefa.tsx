@@ -1,28 +1,32 @@
 import { Image, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { EstadoTarefaType } from '../../reducers';
+
 
 export type Props = {
-  isSelected?: boolean;
+  estaSelecionado?: boolean;
   label: string;
-  status?: 'INICIAR' | 'EM_PROGRESSO' | 'FINALIZAR';
+  status?: EstadoTarefaType;
+  onPress: VoidFunction;
 };
 
 const imagemCheck = require('../../../assets/tiny-check.png');
 
 export function ItemTarefa({
-  isSelected = false,
+  estaSelecionado = false,
   label,
-  status = 'INICIAR',
+  status = EstadoTarefaType.Iniciar,
+  onPress,
 }: Props) {
   return (
     <TouchableOpacity
       onPress={() => {}}
-      style={[styles.container, isSelected && styles.containerSelected]}
+      style={[styles.container, estaSelecionado && styles.containerSelected]}
     >
       <Text style={styles.label}>{label}</Text>
-      {status === 'EM_PROGRESSO' && (
-        <Text style={styles.statusText}>In progress</Text>
+      {status === EstadoTarefaType.EmProgresso && (
+        <Text style={styles.statusText}>Em Progresso</Text>
       )}
-      {status === 'FINALIZAR' && <Image source={imagemCheck} />}
+      {status === EstadoTarefaType.Finalizar && <Image source={imagemCheck} />}
     </TouchableOpacity>
   );
 }

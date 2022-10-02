@@ -4,7 +4,7 @@ import {
   BotaoAdicionar,
   ModalNovaTarefa,
   CardSemTarefas,
-  Timer,
+  Cronometro,
   ListaTarefas,
 } from '../componentes';
 import {
@@ -30,9 +30,21 @@ export function HomeScreen() {
         ) : (
           <>
             <View style={styles.timerContainer}>
-              <Timer />
+              <Cronometro 
+                enabled={TelaInicialAcoes.CronometroEstaAtivo(state)}
+                opcaoComecar={() => dispatch(TelaInicialAcoes.comecarTarefa())}
+                opcaoFinalizar={() => dispatch(TelaInicialAcoes.finalizarTarefa())}
+                opcaoParar={() => dispatch(TelaInicialAcoes.pararTarefa())}
+              />
             </View>
-            <ListaTarefas data={state.tarefas} />
+            <ListaTarefas indexSelecionado={state.tarefaSelecionadaIndex}
+              data={state.tarefas}
+              onPress={(tarefaSelecionadaIndex: number) =>
+                dispatch(
+                  TelaInicialAcoes.TarefaSelecionadaIndex({ tarefaSelecionadaIndex })
+                )
+              }
+            />
           </>
         )}
         <BotaoAdicionar
@@ -45,16 +57,9 @@ export function HomeScreen() {
           onClose={() =>
             dispatch(TelaInicialAcoes.botaoModal({ modalEstaVisivel: false }))
           }
+          
           onSubmit={(label: string) =>
-            dispatch(
-              TelaInicialAcoes.criarTarefa({
-                tarefa: {
-                  label,
-                  isSelected: false,
-                  status: 'INICIAR',
-                },
-              })
-            )
+            dispatch(TelaInicialAcoes.criarTarefa({ tarefa: { label } }))
           }
         />
       </View>

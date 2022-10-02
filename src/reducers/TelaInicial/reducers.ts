@@ -15,6 +15,20 @@ export function telaInicialReducer(
         tarefas: [...state.tarefas, action.payload.tarefa],
       };
 
+    case TelaInicialActionBotao.TarefaSelecionadaIndex:
+      return {
+        ...state,
+        tarefaSelecionadaIndex: action.payload.tarefaSelecionadaIndex,
+      };
+
+    case TelaInicialActionBotao.SetStatusTarefa:
+      const tarefas = [...state.tarefas];
+      tarefas[state.tarefaSelecionadaIndex].status = action.payload.statusTarefa;
+      return {
+        ...state,
+        tarefas,
+      };
+
     default:
       return { ...state };
   }
