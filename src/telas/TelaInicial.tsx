@@ -3,9 +3,9 @@ import { Image, StyleSheet, View, SafeAreaView } from 'react-native';
 import {
   BotaoAdicionar,
   ModalNovaTarefa,
-  CardSemTarefas,
   Cronometro,
   ListaTarefas,
+  Conselho,
 } from '../componentes';
 import {
   TelaInicialAcoes,
@@ -25,28 +25,27 @@ export function HomeScreen() {
     <SafeAreaView style={styles.safeArea}>
       <View style={styles.container}>
         <Image source={logoImage} style={styles.logo} resizeMode="contain" />
-        {false ? (
-          <CardSemTarefas />
-        ) : (
-          <>
-            <View style={styles.timerContainer}>
-              <Cronometro 
-                enabled={TelaInicialAcoes.CronometroEstaAtivo(state)}
-                opcaoComecar={() => dispatch(TelaInicialAcoes.comecarTarefa())}
-                opcaoFinalizar={() => dispatch(TelaInicialAcoes.finalizarTarefa())}
-                opcaoParar={() => dispatch(TelaInicialAcoes.pararTarefa())}
-              />
-            </View>
-            <ListaTarefas indexSelecionado={state.tarefaSelecionadaIndex}
-              data={state.tarefas}
-              onPress={(tarefaSelecionadaIndex: number) =>
-                dispatch(
-                  TelaInicialAcoes.TarefaSelecionadaIndex({ tarefaSelecionadaIndex })
-                )
-              }
+
+        <Conselho />
+
+          <View style={styles.timerContainer}>
+            <Cronometro 
+              enabled={TelaInicialAcoes.CronometroEstaAtivo(state)}
+              opcaoComecar={() => dispatch(TelaInicialAcoes.comecarTarefa())}
+              opcaoFinalizar={() => dispatch(TelaInicialAcoes.finalizarTarefa())}
+              opcaoParar={() => dispatch(TelaInicialAcoes.pararTarefa())}
             />
-          </>
-        )}
+          </View>
+
+          <ListaTarefas indexSelecionado={state.tarefaSelecionadaIndex}
+            data={state.tarefas}
+            onPress={(tarefaSelecionadaIndex: number) =>
+              dispatch(
+                TelaInicialAcoes.TarefaSelecionadaIndex({ tarefaSelecionadaIndex })
+              )
+            }
+          />
+
         <BotaoAdicionar
           onPress={() =>
             dispatch(TelaInicialAcoes.botaoModal({ modalEstaVisivel: true }))
@@ -79,9 +78,9 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
   },
   logo: {
-    width: 227,
-    height: 46,
+    width: 1000,
+    height: 100,
     alignSelf: 'center',
-    marginVertical: 30,
+    marginTop: 20,
   },
 });

@@ -3,10 +3,12 @@ import { Theme } from '../../temas';
 
 const plus = require('../../../assets/plus.png');
 
+//define função para quando pressionar o botao
 type Props = {
   onPress: VoidFunction;
 };
 
+//botao adicionar tarefa
 export function BotaoAdicionar({ onPress }: Props) {
   return (
     <TouchableOpacity style={styles.container} onPress={onPress}>
@@ -25,7 +27,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     elevation: 0.5,
     shadowColor: '#000',
-    shadowOffset: { width: 0, height: 5 },
+    shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.15,
     position: 'absolute',
     right: 40,

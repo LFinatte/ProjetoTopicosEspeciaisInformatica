@@ -1,6 +1,7 @@
 import { TouchableOpacity, StyleSheet, Text, Image } from 'react-native';
 import { Theme } from '../../temas';
 
+//define propriedades do botao
 type Props = {
   variant?: 'primary' | 'light';
   label?: string;
@@ -15,9 +16,13 @@ export function Botao({
   icon,
   disabled = false,
   onPress,
+
 }: Props) {
+
   let touchableOpacityStyles: any = { backgroundColor: Theme.colors.primary };
   let textStyles = { color: '#fff' };
+  
+  //se o botao for usar variação branca
   if (variant === 'light') {
     touchableOpacityStyles = {
       backgroundColor: '#fff',
@@ -29,6 +34,8 @@ export function Botao({
     };
     textStyles = { color: Theme.colors.primary };
   }
+
+  //se o botao estiver desativado
   if (disabled) {
     touchableOpacityStyles = {
       backgroundColor: '#ccc',
@@ -41,7 +48,7 @@ export function Botao({
       style={[styles.button, touchableOpacityStyles]}
     >
       {!!label && <Text style={[styles.text, textStyles]}>{label}</Text>}
-      {!!icon && <Image source={icon} />}
+      {!!icon && <Image source={icon} style={styles.imagem}/>}
     </TouchableOpacity>
   );
 }
@@ -59,4 +66,9 @@ const styles = StyleSheet.create({
     fontSize: 20,
     textTransform: 'uppercase',
   },
+
+  imagem: {
+    height: 20,
+    width: 20,
+  }
 });

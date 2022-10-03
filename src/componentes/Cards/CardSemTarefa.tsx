@@ -1,40 +1,40 @@
-import { View, StyleSheet, Text, Image } from 'react-native';
+// import { View, StyleSheet, Text, Image } from 'react-native';
 
-const check = require('../../../assets/big-check.png');
+// const check = require('../../../assets/big-check.png');
 
-export function CardSemTarefas() {
-  return (
-    <>
-      <View style={styles.container}>
-        <Image source={check} style={styles.image} />
-        <Text style={styles.text}>Sem Tarefas</Text>
-      </View>
-      <Text style={styles.smallText}>Você está livre para aproveitar seu dia</Text>
-    </>
-  );
-}
+// export function CardSemTarefas() {
+//   return (
+//     <>
+//       <View style={styles.container}>
+//         <Image source={check} style={styles.image} />
+//         <Text style={styles.text}>Sem Tarefas</Text>
+//       </View>
+//       <Text style={styles.smallText}>Você está livre para aproveitar seu dia</Text>
+//     </>
+//   );
+// }
 
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: 'rgba(255,255,255,0.05)',
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingVertical: 20,
-    borderRadius: 4,
-  },
-  image: {
-    marginVertical: 10,
-  },
-  text: {
-    color: '#fff',
-    fontSize: 20,
-  },
-  smallText: {
-    width: 150,
-    color: '#fff',
-    fontSize: 14,
-    alignSelf: 'center',
-    textAlign: 'center',
-    paddingVertical: 20,
-  },
-});
+// const styles = StyleSheet.create({
+//   container: {
+//     backgroundColor: 'rgba(255,255,255,0.05)',
+//     alignItems: 'center',
+//     justifyContent: 'center',
+//     paddingVertical: 20,
+//     borderRadius: 4,
+//   },
+//   image: {
+//     marginVertical: 10,
+//   },
+//   text: {
+//     color: '#fff',
+//     fontSize: 20,
+//   },
+//   smallText: {
+//     width: 150,
+//     color: '#fff',
+//     fontSize: 14,
+//     alignSelf: 'center',
+//     textAlign: 'center',
+//     paddingVertical: 20,
+//   },
+// });

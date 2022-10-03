@@ -16,6 +16,7 @@ enum CronometroStatus {
 
 const CRONOMETRO_SEGUNDOS = 5;
 
+//opcoes da tarefa
 type Props = {
   enabled?: boolean;
   opcaoComecar?: VoidFunction;
@@ -34,6 +35,7 @@ export function Cronometro({
   const [estaRodando, setRodando] = useState(false);
   const [segundosCronometro, setSegundosCronometro] = useState(CRONOMETRO_SEGUNDOS);
 
+  //inicar tarefa
   function comecar() {
     if (opcaoComecar) opcaoComecar();
     setRodando(true);
@@ -41,16 +43,19 @@ export function Cronometro({
     setParado(CronometroStatus.EmProgresso);
   }
 
+    //tarefa em progresso
   function rodando() {
     setRodando(true);
     setParado(CronometroStatus.EmProgresso);
   }
 
+  //tarefa pausada
   function pausado() {
     setRodando(false);
     setParado(CronometroStatus.EmProgresso);
   }
 
+  //tarefa parada
   function parado() {
     if (opcaoParar) opcaoParar();
     setRodando(false);
@@ -58,18 +63,20 @@ export function Cronometro({
     setParado(CronometroStatus.Parar);
   }
 
+  //reiniciar tarefa
   function recomecar() {
     setRodando(true);
     setSegundosCronometro(CRONOMETRO_SEGUNDOS);
     setParado(CronometroStatus.EmProgresso);
   }
 
+  //parar cronometro
   function finalizar() {
     setRodando(false);
     setParado(CronometroStatus.Finalizar);
-    //TODO: finalizar
   }
 
+  //terminar tarefa
   function terminar() {
     if (opcaoFinalizar) opcaoFinalizar();
     setRodando(false);
@@ -77,6 +84,7 @@ export function Cronometro({
     setParado(CronometroStatus.Parar);
   }
 
+  //função regressiva cronometro
   useEffect(() => {
     if (!estaRodando) return;
     const cronometro = setInterval(() => {
@@ -94,6 +102,7 @@ export function Cronometro({
   const minutos = String(Math.floor(aux / 60)).padStart(2, '0');
   const segundos = String(Math.ceil(aux % 60)).padStart(2, '0');
 
+  //passando estados tarefa + cronometro
   const cronometroStatus = useMemo(() => {
     if (estaParado === CronometroStatus.Parar) {
       return 'Iniciar';
@@ -129,7 +138,7 @@ export function Cronometro({
         {estaParado === CronometroStatus.EmProgresso && (
           <>
             <Botao variant="light" icon={imagemPlay} onPress={rodando} />
-            <View style={{ paddingHorizontal: 10 }}>
+            <View style={{ paddingHorizontal: 10}}>
               <Botao variant="light" icon={imagemPause} onPress={pausado} />
             </View>
             <Botao variant="light" icon={imagemParar} onPress={parado} />

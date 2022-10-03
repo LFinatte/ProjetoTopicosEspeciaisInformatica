@@ -1,3 +1,4 @@
+//definindo tipo de cada funcao
 export enum TelaInicialActionBotao {
   BotaoModal = 'BOTAO_MODAL',
   CriarTarefa = 'CRIAR_TAREFA',
@@ -5,12 +6,14 @@ export enum TelaInicialActionBotao {
   SetStatusTarefa = 'SET_STATUS_TAREFA',
 }
 
+//estados da taefa
 export enum EstadoTarefaType {
   Iniciar = 'INICIAR',
   EmProgresso = 'EM_PROGRESSO',
   Finalizar = 'FINALIZAR',
 }
 
+//selecionar tarefa
 export type TarefasType = {
   isSelected?: boolean;
   label: string;
@@ -30,6 +33,7 @@ export type BotaoModalAcao = {
   payload: BotaoModalPayload;
 };
 
+//criar uma nova tarefa
 export type CriarTarefaPayload = {
   tarefa: TarefasType;
 };
@@ -39,6 +43,7 @@ export type CriarTarefaAcao = {
   payload: CriarTarefaPayload;
 };
 
+//definir qual tarefa esta selecionada
 export type TarefaSelecionadaIndexPayload = {
   tarefaSelecionadaIndex: number;
 };
@@ -57,5 +62,6 @@ export type SetStatusTarefaAcao = {
   payload: SetStatusTarefaPayload;
 };
 
+//exportando açoes definidas
 export type TelaInicialAcoesReducer = BotaoModalAcao | CriarTarefaAcao | TarefaSelecionadaIndexAcao
 | SetStatusTarefaAcao;

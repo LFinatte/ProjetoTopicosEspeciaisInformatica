@@ -19,14 +19,14 @@ export function ItemTarefa({
 }: Props) {
   return (
     <TouchableOpacity
-      onPress={() => {}}
+      onPress={onPress}
       style={[styles.container, estaSelecionado && styles.containerSelected]}
     >
       <Text style={styles.label}>{label}</Text>
       {status === EstadoTarefaType.EmProgresso && (
         <Text style={styles.statusText}>Em Progresso</Text>
       )}
-      {status === EstadoTarefaType.Finalizar && <Image source={imagemCheck} />}
+      {status === EstadoTarefaType.Finalizar && <Image source={imagemCheck} style={styles.imagem}/>}
     </TouchableOpacity>
   );
 }
@@ -55,4 +55,9 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#fff',
   },
+
+  imagem:{
+    height: 20,
+    width:20,
+  }
 });

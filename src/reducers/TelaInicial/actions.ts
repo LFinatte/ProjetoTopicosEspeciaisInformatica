@@ -12,6 +12,7 @@ import {
   EstadoTarefaType,
 } from './types';
 
+//carregar modal quando clicar no botao
 function botaoModal(payload: BotaoModalPayload): BotaoModalAcao {
   return {
     tipo: TelaInicialActionBotao.BotaoModal,
@@ -26,6 +27,7 @@ function criarTarefa(payload: CriarTarefaPayload): CriarTarefaAcao {
   };
 }
 
+//recuperando index de cada tarefa 
 function TarefaSelecionadaIndex(
   payload: TarefaSelecionadaIndexPayload
 ): TarefaSelecionadaIndexAcao {
@@ -35,6 +37,7 @@ function TarefaSelecionadaIndex(
   };
 }
 
+//desativando tarefa depois de finalizada
 function CronometroEstaAtivo(state: TelaInicial): boolean {
   return (
     state.tarefaSelecionadaIndex >= 0 &&
@@ -42,6 +45,7 @@ function CronometroEstaAtivo(state: TelaInicial): boolean {
   );
 }
 
+//definindo status atual da tarefa
 function SetStatusTarefa(payload: SetStatusTarefaPayload): SetStatusTarefaAcao {
   return {
     tipo: TelaInicialActionBotao.SetStatusTarefa,
