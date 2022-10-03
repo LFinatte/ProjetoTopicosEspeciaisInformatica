@@ -53,6 +53,7 @@ export type TarefaSelecionadaIndexAcao = {
   payload: TarefaSelecionadaIndexPayload;
 };
 
+//passa status
 export type SetStatusTarefaPayload = {
   statusTarefa: EstadoTarefaType;
 };

@@ -9,6 +9,7 @@ export function Conselho(){
 
     return <Text style={styles.conselho} >{resultado}</Text>
 
+    //consumindo api
     function conselho() {
         axios.get('https://api.adviceslip.com/advice').then(it => {
             resultado = it.data.slip.advice;

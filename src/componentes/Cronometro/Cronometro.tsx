@@ -24,6 +24,7 @@ type Props = {
   opcaoParar?: VoidFunction;
 };
 
+//opcoes cronometro
 export function Cronometro({
   enabled = false,
   opcaoComecar,
@@ -130,7 +131,7 @@ export function Cronometro({
             <Botao
               disabled={!enabled}
               variant="light"
-              label="START"
+              label="COMEÇAR"
               onPress={comecar}
             />
           </View>

@@ -53,6 +53,7 @@ function SetStatusTarefa(payload: SetStatusTarefaPayload): SetStatusTarefaAcao {
   };
 }
 
+//status possiveis para tarefa
 function comecarTarefa() {
   return SetStatusTarefa({ statusTarefa: EstadoTarefaType.EmProgresso });
 }

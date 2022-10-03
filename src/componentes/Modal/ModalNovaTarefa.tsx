@@ -14,6 +14,7 @@ import { Botao } from '../Botoes';
 
 const fechar = require('../../../assets/close.png');
 
+//propriedades da tarefa
 type Props = {
   isVisible: boolean;
   onClose: VoidFunction;
@@ -53,7 +54,7 @@ export function ModalNovaTarefa({ isVisible, onClose, onSubmit }: Props) {
               placeholderTextColor="rgba(0,0,0,0.5)"
             />
             <Botao
-              label="CREATE"
+              label="CRIAR"
               onPress={handleSubmit}
               disabled={!text || text?.length === 0}
             />
